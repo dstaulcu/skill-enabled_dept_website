@@ -1,0 +1,16 @@
+{
+  "name": "host-site",
+  "version": "1.0.0",
+  "description": "Test harness - Department landing page with embedded AI chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["test-harness", "static-server"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

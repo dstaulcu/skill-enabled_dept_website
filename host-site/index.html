@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Landing Page - Test Harness</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🏛️ Department of Technology</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about">
+            <h2>Welcome to Our Department</h2>
+            <p>Providing innovative technology solutions and services to support our mission.</p>
+        </section>
+
+        <section id="ai-assistant">
+            <h2>AI Assistant</h2>
+            <p>Get instant answers to your questions and access enterprise tools through our AI-powered chat interface.</p>
+            
+            <!-- Embedded AI Chat Interface -->
+            <div class="iframe-container">
+                <iframe 
+                    id="ai-chat-iframe"
+                    src="http://localhost:3001?theme=corporate-blue&mockUser=john.doe@dept.gov"
+                    title="AI Chat Assistant"
+                    sandbox="allow-scripts allow-same-origin"
+                    allow="clipboard-write">
+                </iframe>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Documentation</h3>
+                    <p>Access comprehensive guides and resources</p>
+                </div>
+                <div class="service-card">
+                    <h3>Support</h3>
+                    <p>Get help from our team</p>
+                </div>
+                <div class="service-card">
+                    <h3>Workflows</h3>
+                    <p>Automate common tasks</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Department of Technology. For official use only.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Listen for messages from the iframe
+        window.addEventListener('message', function(event) {
+            // In production, validate event.origin
+            console.log('Message from iframe:', event.data);
+        });
+
+        // Send theme info to iframe
+        const iframe = document.getElementById('ai-chat-iframe');
+        iframe.addEventListener('load', function() {
+            iframe.contentWindow.postMessage({
+                type: 'theme',
+                primary: '#003366',
+                secondary: '#0066cc',
+                background: '#f5f5f5',
+                font: 'Arial, sans-serif'
+            }, 'http://localhost:3001');
+        });
+    </script>
+</body>
+</html>
